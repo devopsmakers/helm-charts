@@ -16,5 +16,5 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: {{ required "a valid pvProvisioner.fsId value is required" .Values.pvProvisioner.fsId }}:/
+    volumeHandle: {{ template aws-efs-csi.fsId }}:/
 {{- end}}

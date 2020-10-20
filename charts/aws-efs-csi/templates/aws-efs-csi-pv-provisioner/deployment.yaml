@@ -20,7 +20,7 @@ spec:
         image: "{{ .Values.pvProvisioner.image.repository }}:{{ .Values.pvProvisioner.image.tag }}"
         imagePullPolicy: "{{ .Values.pvProvisioner.image.pullPolicy }}"
         args:
-        - -file-system-id={{ required "a valid pvProvisioner.fsId value is required" .Values.pvProvisioner.fsId }}
+        - -file-system-id={{ template aws-efs-csi.fsId }}
         volumeMounts:
         - mountPath: /efs
           name: efs
