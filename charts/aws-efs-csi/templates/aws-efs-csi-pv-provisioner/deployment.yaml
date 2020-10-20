@@ -1,0 +1,31 @@
+{{- if .Values.pvProvisioner.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-efs-csi-pv-provisioner
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.pvProvisioner.replicaCount }}
+  selector:
+    matchLabels:
+      app: aws-efs-csi-pv-provisioner
+  template:
+    metadata:
+      labels:
+        app: aws-efs-csi-pv-provisioner
+    spec:
+      serviceAccountName: aws-efs-csi-pv-provisioner
+      containers:
+      - name: aws-efs-csi-pv-provisioner
+        image: "{{ .Values.pvProvisioner.image.repository }}:{{ .Values.pvProvisioner.image.tag }}"
+        imagePullPolicy: "{{ .Values.pvProvisioner.image.pullPolicy }}"
+        args:
+        - -file-system-id={{ required "a valid pvProvisioner.fsId value is required" .Values.pvProvisioner.fsId }}
+        volumeMounts:
+        - mountPath: /efs
+          name: efs
+      volumes:
+      - name: efs
+        persistentVolumeClaim:
+          claimName: aws-efs-csi-pv-provisioner-root
+{{- end }}

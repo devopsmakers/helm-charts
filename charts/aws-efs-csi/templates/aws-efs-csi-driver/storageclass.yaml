@@ -1,0 +1,11 @@
+{{- if .Values.defaultStorageClass.create -}}
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: {{ .Values.defaultStorageClass.name }}
+provisioner: efs.csi.aws.com
+{{- with .Values.defaultStorageClass.mountOptions }}
+mountOptions:
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

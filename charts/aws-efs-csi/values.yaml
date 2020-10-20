@@ -1,0 +1,78 @@
+# Default values for aws-efs-csi-driver.
+image:
+  repository: logmeout/aws-efs-csi-driver # community built image with updated efs-utils
+  tag: "1.1.0"
+  pullPolicy: IfNotPresent
+
+sidecars:
+  livenessProbeImage:
+    repository: quay.io/k8scsi/livenessprobe
+    tag: "v2.0.0"
+  nodeDriverRegistrarImage:
+    repository: quay.io/k8scsi/csi-node-driver-registrar
+    tag: "v1.3.0"
+
+# Create a default StorageClass resource
+defaultStorageClass:
+  create: true
+  name: efs-sc
+
+serviceAccount:
+  create: true
+  annotations: {}
+
+# Empty, overridable values
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+podAnnotations: {}
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Below controls and configures the installation of the:
+# EFS CSI Driver PV Provisioner from LogMeIn
+# https://github.com/LogMeIn/aws-efs-csi-pv-provisioner
+# Contains largely the same override values as the CSI Driver
+pvProvisioner:
+  enabled: true
+
+  # fsId: fs-xxxxx
+
+  replicaCount: 1
+
+  image:
+    repository: logmeout/aws-efs-csi-pv-provisioner # Community built image (by me)
+    tag: "0.0.1"
+    pullPolicy: IfNotPresent
+
+  # Empty, overridable values
+  sidecars: {}
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+  podAnnotations: {}
+  resources: {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+  nodeSelector: {}
+  tolerations: []

@@ -1,14 +1,26 @@
 apiVersion: v1
 entries:
-  hello-charts:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2020-10-08T16:47:37.745709+01:00"
-    description: A Helm chart for Kubernetes
-    digest: 3177d3cd7948458c1c8d8bf7269f391dcc4464a52b604f33722d8acdb2e4e79f
-    name: hello-charts
-    type: application
+  aws-efs-csi:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2020-10-20T15:31:15.367554+01:00"
+    description: A Helm chart for AWS EFS CSI Driver and PV Provisioner (from LogMeIn)
+    digest: 31825a43f85abbc8bce2eea76580c1e4f1f840f3c070ffad9243e9a157559242
+    home: https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    keywords:
+    - aws
+    - efs
+    - csi
+    - pv
+    - provisioner
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - name: Tim Birkett
+    name: aws-efs-csi
+    sources:
+    - https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    - https://github.com/LogMeIn/aws-efs-csi-pv-provisioner
     urls:
-    - https://devopsmakers.github.io/helm-charts/releases/hello-charts-0.1.0.tgz
-    version: 0.1.0
-generated: "2020-10-08T16:47:37.744933+01:00"
+    - https://devopsmakers.github.io/helm-charts/releases/aws-efs-csi-0.0.1.tgz
+    version: 0.0.1
+generated: "2020-10-20T15:31:15.366625+01:00"
