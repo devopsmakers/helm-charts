@@ -11,7 +11,7 @@ spec:
   - ReadWriteMany
 {{- with .Values.pvProvisioner.rootPV.mountOptions }}
   mountOptions:
-    {{- toYaml . | nindent 4 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
   persistentVolumeReclaimPolicy: Retain
   storageClassName: efs-sc

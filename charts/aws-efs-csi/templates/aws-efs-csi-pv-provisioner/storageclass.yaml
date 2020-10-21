@@ -6,6 +6,6 @@ metadata:
 provisioner: aws.k8s.logmein.com/efs-csi-pv-provisioner
 {{- with .Values.pvProvisioner.storageClass.mountOptions }}
 mountOptions:
-  {{- toYaml . | nindent 2 }}
+{{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}
