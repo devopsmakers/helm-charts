@@ -9,12 +9,13 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteMany
+{{- with .Values.pvProvisioner.rootPV.mountOptions }}
   mountOptions:
-  - tls
-  - iam
+    {{- toYaml . | nindent 4 }}
+{{- end }}
   persistentVolumeReclaimPolicy: Retain
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: {{ template aws-efs-csi.fsId }}:/
+    volumeHandle: {{ include "aws-efs-csi.fsId" . }}:/
 {{- end}}

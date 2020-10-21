@@ -57,6 +57,12 @@ pvProvisioner:
     tag: "0.0.1"
     pullPolicy: IfNotPresent
 
+  storageClass:
+    mountOptions: {}
+
+  rootPV:
+    mountOptions: {}
+
   # Empty, overridable values
   sidecars: {}
   imagePullSecrets: []
