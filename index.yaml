@@ -3,9 +3,9 @@ entries:
   aws-efs-csi:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-10-21T13:23:36.602457+01:00"
+    created: "2020-10-22T14:51:01.427259+01:00"
     description: A Helm chart for AWS EFS CSI Driver and PV Provisioner (from LogMeIn)
-    digest: 06da662d39f4fef9622987fe66f7ce74e9237de9309876f869a3c61ede9f42af
+    digest: 1c857f2f4657e22fd3ba126453ff7927972ad7450184b7264e2c7bf88a644246
     home: https://github.com/kubernetes-sigs/aws-efs-csi-driver
     keywords:
     - aws
@@ -21,6 +21,6 @@ entries:
     - https://github.com/kubernetes-sigs/aws-efs-csi-driver
     - https://github.com/LogMeIn/aws-efs-csi-pv-provisioner
     urls:
-    - https://devopsmakers.github.io/helm-charts/releases/aws-efs-csi-0.0.2.tgz
-    version: 0.0.2
-generated: "2020-10-21T13:23:36.569002+01:00"
+    - https://devopsmakers.github.io/helm-charts/releases/aws-efs-csi-0.0.3.tgz
+    version: 0.0.3
+generated: "2020-10-22T14:51:01.426061+01:00"
