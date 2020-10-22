@@ -28,4 +28,9 @@ spec:
       - name: efs
         persistentVolumeClaim:
           claimName: aws-efs-csi-pv-provisioner-root
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        {{- with .Values.pvProvisioner.nodeSelector }}
+        {{- . | toYaml | nindent 8 }}
+        {{- end }}
 {{- end }}
