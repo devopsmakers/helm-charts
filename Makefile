@@ -4,7 +4,6 @@ lint:
 
 .PHONY: package
 package:
-	rm -f releases/*
 	helm package charts/* --destination releases
 
 .PHONY: updateindex
